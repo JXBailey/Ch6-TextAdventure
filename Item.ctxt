@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=itemName\ itemDescription
+comment0.target=Item(java.lang.String,\ java.lang.String)
+comment0.text=\r\n\ Creates\ an\ item\ object.\r\n\ @param\ itemName\ \ \ \ \ \ \ \ the\ name\ of\ an\ item\r\n\ @param\ itemDescription\ the\ description\ of\ an\ item\r\n
+comment1.params=
+comment1.target=void\ addItems()
+comment1.text=\r\n\ Add\ items\ to\ the\ game.\r\n
+comment2.params=
+comment2.target=java.lang.String\ getItemName()
+comment2.text=\r\n\ Return\ the\ item's\ name.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getItemdescription()
+comment3.text=\r\n\ Return\ the\ item's\ description.\r\n
+numComments=4
