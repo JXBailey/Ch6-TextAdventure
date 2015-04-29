@@ -65,7 +65,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        String longDescription = "You are in " + description + "\n" + getExitString();
+        String longDescription = description + "\n" + getExitString();
 //         if(items.size() > 0)
 //         {
 //             longDescription += "\n The following things are here: \n";

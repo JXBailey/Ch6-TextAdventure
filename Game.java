@@ -76,6 +76,8 @@ public class Game
     
     private int coinCount = 0;
     private int orbCount = 0;
+   
+    Command command;
     private String secondWord;
     
     /**
@@ -91,110 +93,88 @@ public class Game
      * Create all the rooms and link their exits together.
      */
     private void createRooms()
-    {
+    {    
         entrance = new Room("ENTRANCE: the AMAZEMENT Park entrance." + "\n" +
                             "\n" +
                             "You walk up to the ticket window, but no one is inside." + "\n" +
-                            "You pass through the turnstyle and see a clearing up ahead.");
-        if(hasNote == false)
-        {
-            parkPlaza = new Room("PARK PLAZA: a small picnic area with tables and benches." + "\n" +
+                            "You pass through the turnstyle and see a clearing up ahead." + "\n");
+        parkPlaza = new Room("PARK PLAZA: a small picnic area with tables and benches." + "\n" +
                                  "\n" +
-                                 "There's a small note lying on the ground.");
-        }
-        if(hasNote == true)
-        {
-            parkPlaza = new Room("PARK PLAZA: a small picnic area with tables and benches.");
-        }
+                                 "Letters suddenly appear in the sky and they read:" + "\n" +
+                                 "''" + "Th_ p_rt_l _s _n th_ P_rk T_w_r..." + "''." + "\n");
+        
         carousel = new Room("CAROUSEL: a cheesy carousel with annoying music." + "\n" +
                             "\n" +
                             "In front of the carousel, there's a sign:" + "\n" +
-                            "''" + "RIDE AND RECIEVE A PRIZE" + "''.");
+                            "''" + "RIDE AND RECIEVE A PRIZE" + "''." + "\n");
         parkTower = new Room("PARK TOWER: a giant tower that looms over the rest of the park." + "\n" +
                              "\n" +
                              "You walk towards the tower, but there's a locked gate in front of it." + "\n" +
-                             "The gate has five small holes in it...");
+                             "The gate has five small holes in it..." + "\n");
                
                              
         sapphireTunnel = new Room("SAPPHIRE TUNNEL: a tunnel with water leaking from the walls:" + "\n" +
                                   "\n" +
                                   "As you walk through the tunnel, you hear a voice..." + "\n" +
-                                  "''" + "Your prize is at the end of a long, dreary journey" + "''.");
+                                  "''" + "Your prize is at the end of a long, dreary journey" + "''." + "\n");
         giftShop = new Room("GIFT SHOP: a small shop...that only sells bathing suits." + "\n" +
                             "\n" +
                             "After walking through the store, you reach a register." + "\n" +
                             "There's a sign:" + "\n" +
-                            "''" + "BATHING SUITS 3 COINS" + "''.");
+                            "''" + "BATHING SUITS 3 COINS" + "''." + "\n");
         wavePool = new Room("WAVE POOL: a pool filled with murky, blue water." + "\n" +
                             "\n" +
                             "You walk pass rows and rows of empty chairs and umbrellas" + "\n" +
-                            "until you reach the edge of the pool."); 
+                            "until you reach the edge of the pool." + "\n"); 
         lazyRiver = new Room("LAZY RIVER: a slow moving river filled with murky, blue water." + "\n" +
                              "\n" +
                              "You walk to the gate and there's a sign:" + "\n" +
-                             "''" + "PRESENT PASS TO ENTER" + "''.");
-         
-                             
-        if(hasWateringCan == false)
-        {
-            gardenGates = new Room("GARDEN GATES: a giant gate that's covered in flowers." + "\n" +
-                                   "\n" +
-                                   "A watering can lies on the ground." + "\n" +
-                                   "Next to it...there seems to have been a seed planted."); 
-        }
-        if(hasWateringCan == true)
-        {
-            gardenGates = new Room("GARDEN GATES: a giant gate that's covered in flowers." + "\n" +
-                                   "\n" +
-                                   "There seems to have been a seed planted."); 
-        }
+                             "''" + "PRESENT PASS TO ENTER" + "''." + "\n");
+        
+        gardenGates = new Room("GARDEN GATES: a giant gate that's covered in flowers." + "\n");                     
         pettingZoo = new Room("PETTING ZOO: a petting zoo containing a lone sheep." + "\n" +
                               "\n" +    
                               "As you walk around, you notice that there aren't any animals around." + "\n" +
                               "You eventually reach a lone goat with gleaming red eyes." + "\n" +
                               "It looks as if it's sitting on something." + "\n" +
                               "The goat then opens it's mouth and in a childlike voice says:" + "\n" +
-                              "''" + "H...hu..ng...ry..." + "''.");
-        hedgeMaze = new Room("HEGDE MAZE: a simple hedge maze." + "\n" +
+                              "''" + "H...hu..ng...ry..." + "''." + "\n");                                                      
+        hedgeMaze = new Room("You board the train and head south towards the hedge maze." + "\n" +
+                             "HEGDE MAZE: a simple hedge maze." + "\n" +
                              "\n" +
-                             "You approach the entrance and see that it is covered in thorns.");
-        train = new Room("TRAIN: a childish train that slowly moves along the tracks."); 
+                             "You approach the entrance and see that it is covered in thorns." + "\n");
+        train = new Room("TRAIN: a childish train that slowly moves along the tracks." + "\n"); 
 
         
         deathsDoor = new Room("DEATH'" + "S DOOR: a creepy pathway lined with skulls." + "\n" +
                               "\n" +
                               "You slowly walk along the pathway and hear a voice..." + "\n" +
-                              "''" + "What you seek lies among the dead" + "''.");
-        graveyard = new Room("GRAVEYARD: a graveyard filled with tombstones." + "\n" +
+                              "''" + "What you seek lies among the dead" + "''." + "\n");
+        graveyard = new Room("You board the train and head north towards the graveyard." + "\n" +
+                             "GRAVEYARD: a graveyard filled with tombstones." + "\n" +
                              "\n" +
-                             "You walk among the tombstones and reach a mausoleum.");
-        houseOfMirrors = new Room("HOUSE OF MIRRORS: an empty house with mirrors along the walls.");
-        hauntedHouse = new Room("an " + "''" + "abandoned" + "''" + "house.");
+                             "You walk among the tombstones and reach a mausoleum." + "\n");
+        houseOfMirrors = new Room("HOUSE OF MIRRORS: an empty house with mirrors along the walls." + "\n");
+        hauntedHouse = new Room("HAUNTED HOUSE: an " + "''" + "abandoned" + "''" + " house." + "\n");
 
           
-        bigBangBridge = new Room("BIG BANG BRIDGE: a bridge that shoots fireworks from it's sides.");
-        bumperCars = new Room("BUMPER CARS: an arena filled with bumper cars...");
+        bigBangBridge = new Room("BIG BANG BRIDGE: a bridge that shoots fireworks from it's sides." + "\n");
+        bumperCars = new Room("BUMPER CARS: an arena filled with bumper cars..." + "\n");
         foodCourt = new Room("FOOD COURT: a food court...with a limited selection." + "\n" +
                              "\n" +                
                              "You walk up to one of the registers and see a sign:" + "\n" +
-                             "''" + "SALAD 3 COINS" + "''.");
-        arcade = new Room("ARCADE: a broken down arcade with only a few games.");
+                             "''" + "SALAD 3 COINS" + "''." + "\n");
+        arcade = new Room("ARCADE: a broken down arcade with only a few games." + "\n");
 
-        if(hasYellowKey == false)
-        {
-            playground = new Room("PLAYGROUND: a children's playground that's...fun." + "\n" +
-                                  "\n" +        
-                                  "It seems someone dropped a yellow key on the ground.");
-        }
-        if(hasYellowKey == true)
-        {
-            playground = new Room("PLAYGROUND: a children's playground that's...fun.");
-        }
-        rollerCoaster = new Room("ROLLER COASTER: a old roller coaster with with yellow cars.");
-        ferrisWheel = new Room("FERRIS WHEEL: a slow moving ferris wheel.");
-        chairLift  = new Room("CHAIR LIFT: a chair lift that seems to lead to a far corner of the park.");
         
-        controlCenter = new Room("CONTROL CENTER: a small room filled with monitors.");
+        playground = new Room("PLAYGROUND: a children's playground that's...fun." + "\n");
+        rollerCoaster = new Room("ROLLER COASTER: a old roller coaster with with yellow cars." + "\n");
+        ferrisWheel = new Room("FERRIS WHEEL: a slow moving ferris wheel." + "\n");
+        chairLift  = new Room("CHAIR LIFT: a chair lift that seems to lead to a far corner of the park." + "\n");
+        
+        controlCenter = new Room("CONTROL CENTER: a small room filled with monitors." + "\n" +
+                                 "You look around the room and see that it is filled with monitors" + "\n" +
+                                 "that show different parts of the park. There's a book on the desk." + "\n");
                 
         // initialise room exits
         entrance.setExit("north", parkPlaza);
@@ -221,14 +201,16 @@ public class Game
                 
         lazyRiver.setExit("south", giftShop);
         lazyRiver.setExit("west", wavePool);
-      
+           
         gardenGates.setExit("east", carousel);
         
         pettingZoo.setExit("north", gardenGates);
-              
+        
         train.setExit("north", graveyard);
-        train.setExit("south", hedgeMaze);        
+        train.setExit("south", hedgeMaze);
         train.setExit("east", gardenGates);
+        
+        hedgeMaze.setExit("north", train);        
         
         deathsDoor.setExit("north", houseOfMirrors);
         deathsDoor.setExit("south", gardenGates);
@@ -239,16 +221,17 @@ public class Game
         houseOfMirrors.setExit("west", hauntedHouse);
         
         hauntedHouse.setExit("south", graveyard);
-        hauntedHouse.setExit("west", houseOfMirrors);              
+        hauntedHouse.setExit("east", houseOfMirrors);              
        
         bigBangBridge.setExit("south", foodCourt);
-        bigBangBridge.setExit("east", arcade);
+        bigBangBridge.setExit("east", arcade);            
+
         bigBangBridge.setExit("west", houseOfMirrors);        
         
         foodCourt.setExit("north", bigBangBridge);
         foodCourt.setExit("east", bumperCars);
-        
-        bumperCars.setExit("north", arcade);
+
+        bumperCars.setExit("north", arcade);        
         bumperCars.setExit("west", foodCourt);
         
         arcade.setExit("south", bumperCars);
@@ -265,53 +248,12 @@ public class Game
         ferrisWheel.setExit("west", playground);
         
         chairLift.setExit("west", ferrisWheel);
+        chairLift.setExit("east", controlCenter);
         
         controlCenter.setExit("north", chairLift);     
         
         currentRoom = entrance;  // start game outside
-    }   
-    
-    /** 
-     *  Create the goat scenario for the petting zoo.
-     */
-    private boolean goatMoved() 
-    {
-        if(currentRoom == pettingZoo && hasSalad == true && goatMoved == false)
-        {
-            System.out.println("The goat starts sniffing around and turns to you." + "\n" +
-                               "The goat smells the salad and charges at you." + "\n" +
-                               "You drop the salad and the goat starts eating it." + "\n" +
-                               "You walk over to where the goat was sitting and find a giant pair of scissors.");
-            return true;
-        }
-        if(currentRoom == pettingZoo && goatMoved == true)
-        {
-            System.out.println("The goat turns to you and simply stares.");
-            return true;
-        }
-        else
-        {
-            System.out.println("The goat simply stares stares at you...");
-            return false;
-        }
-    }       
-    
-    /** 
-     *  Prevent the player from leaving the hedge maze area whil inside the hedge maze.
-     */
-    private boolean endMaze() 
-    {
-        if(endMaze == false)
-        {
-            hedgeMaze.setExit("north", train);
-            return false;
-        }
-        else
-        {
-            System.out.println("You can't go that way.");
-            return true;
-        }
-    }     
+    }           
 
     /**
      *  Main play routine.  Loops until end of play.
@@ -329,7 +271,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Hope you enjoyed your time at Amazement Park! Hope so see you soon...");
+        System.out.println("Hope you enjoyed your time at Amazement Park! Hope so see you soon..." + "\n");
     }
 
     /**
@@ -340,7 +282,7 @@ public class Game
         System.out.println();
         System.out.println("Welcome to the AMAZEMENT Park!");
         System.out.println("Amazement Park is a new, text adventure game.");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need any help.");
+        System.out.println("Type '" + CommandWord.HELP + "' if you need any help." + "\n");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -409,10 +351,6 @@ public class Game
             case PLACE:
                  placeBook();
                  break;
-                 
-            case READ:
-                 readNote();
-                 break;
                 
             case REMOVE:
                  removeSuit();
@@ -422,13 +360,17 @@ public class Game
                  rideCarousel();
                  rideF_Wheel();
                  break;                
-                
+
+            case SHOW:
+                 showSalad();
+                 break;
+                 
             case TAKE:
                  takeItem();
                  break;
                 
             case UNKNOWN:
-                 System.out.println("I don't know what you mean...");
+                 System.out.println("I don't know what you mean..." + "\n");
                  break;
 
             case USE:
@@ -459,16 +401,19 @@ public class Game
             System.out.println("You step up to the coaster's control panel and use the key" + "\n" +
                                "to turn on the ride. The cars start moving and rush towards" + "\n" +
                                "the first loop. When the cars are upside down, you notice something" + "\n" +
-                               "fall from one of them. It's a lift key.");
+                               "fall from one of them. It's a lift key." + "\n");
             coasterOff = false;
         }
         if(currentRoom == rollerCoaster && hasYellowKey == true && coasterOff == false)
         {
-            System.out.println("The coaster is already running.");
+            System.out.println("The coaster is already running." + "\n");
+            coasterOff = false;
         }
+        
         if(currentRoom == rollerCoaster && hasYellowKey == false)
         {
-            System.out.println("You need the yellow key to activate the roller coaster.");
+            System.out.println("It looks like to need a key to activate the coaster." + "\n");
+            coasterOff = true;
         }
     }
     
@@ -481,17 +426,20 @@ public class Game
         {
             System.out.println("You step up to the control panel and turn on the chair lift." + "\n" +
                                "The chairs start moving to a far side of the park..." + "\n" +
-                               "You can now travel via the chair lift.");
+                               "You can now travel via the chair lift." + "\n");
             liftOff = false;
         }
         if(currentRoom == chairLift && hasLiftKey == true && liftOff == false)
         {
-            System.out.println("The chair lift is already running.");
+            System.out.println("The chair lift is already running." + "\n");
+            liftOff = false;
         }
+        
         if(currentRoom == chairLift && hasLiftKey == false)
         {
-            System.out.println("You need the lift key to activate the lift.");
-         }
+            System.out.println("It looks like to need a key to activate the chair lift." + "\n");
+            liftOff = true;
+        }
     }    
     
     /** 
@@ -502,7 +450,7 @@ public class Game
         if(currentRoom == giftShop && coinCount >= 3)
         {
             System.out.println("You place three coins on the counter." + "\n" +
-                               "A bathing suit materializes in front of you and you take it.");
+                               "A bathing suit materializes in front of you and you take it." + "\n");
             coinCount = coinCount - 3;
             hasBathingSuit = true;
         }
@@ -510,7 +458,7 @@ public class Game
         if(currentRoom == giftShop && coinCount < 3)
         {
             System.out.println("You don't have enough coins to buy this." + "\n" +
-                               "You have " + coinCount + " coins.");
+                               "You have " + coinCount + " coins." + "\n");
         }
     }  
     
@@ -522,7 +470,7 @@ public class Game
         if(currentRoom == foodCourt && coinCount >= 3)
         {
             System.out.println("You place four coins on the counter." + "\n" +
-                               "A salad materializes in front of you and you take it.");
+                               "A salad materializes in front of you and you take it." + "\n");
             coinCount = coinCount - 3;
             hasSalad = true;
         }
@@ -530,7 +478,7 @@ public class Game
         if(currentRoom == foodCourt && coinCount < 3)
         {
             System.out.println("You don't have enough coins to buy this." + "\n" +
-                               "You have " + coinCount + " coins.");
+                               "You have " + coinCount + " coins." + "\n");
         }
     }     
     
@@ -538,105 +486,100 @@ public class Game
      * Get details on one of your items.
      */
     private void checkItem() 
-    {       
-        if(hasNote == true && secondWord == "note")
+    {         
+            if(hasBathingSuit == true && secondWord == "bathing suit")
         {
-            System.out.println("a crumpled up piece of paper that you found on the ground.");
-        }      
-        
-        if(hasBathingSuit == true && secondWord == "bathing suit")
-        {
-            System.out.println("a bathing suit that you bought at the gift shop.");
+            System.out.println("a bathing suit that you bought at the gift shop." + "\n");
         }        
         
         if(hasBluePass == true &&  secondWord == "blue pass")
         {
-            System.out.println("a blue colored pass that is used to ride the Last River.");
+            System.out.println("a blue colored pass that is used to ride the Last River." + "\n");
         }
 
         if(hasBlueOrb == true && secondWord == "blue orb")
         {
-            System.out.println("a light blue orb that's filled with water.");
+            System.out.println("a light blue orb that's filled with water." + "\n");
         }
 
         if(hasWateringCan == true && secondWord == "watering can")
         {
-            System.out.println("a small green watering can with a flower on it.");
+            System.out.println("a small green watering can with a flower on it." + "\n");
         }
 
         if(hasHammer == true && secondWord == "hammer")
         {
             System.out.println("a small hammer with" + "\n" +
                                "''" + "RORRIM " + "''" + "\n" +
-                               "written on it.");
+                               "written on it." + "\n");
         }
 
         if(hasRedPass == true && secondWord == "red pass")
         {
-            System.out.println("a red colored pass that grants access to Big Bang Bridge.");
+            System.out.println("a red colored pass that grants access to Big Bang Bridge." + "\n");
         }
 
         if(hasSalad == true && secondWord == "salad")
         {
-            System.out.println("a salad...with no dressing.");
+            System.out.println("a salad...with no dressing." + "\n");
         }
 
         if(hasScissors == true && secondWord == "giant scissors")
         {
-            System.out.println("...giant scissors.");
+            System.out.println("...giant scissors." + "\n");
         }
 
         if(hasGreenOrb == true && secondWord == "green orb")
         {
-            System.out.println("a light green orb that smells like spring.");
+            System.out.println("a light green orb that smells like spring." + "\n");
         }
 
         if(hasArcadePass == true && secondWord == "arcade pass")
         {
-            System.out.println("a pass that grants access to the arcade.");
+            System.out.println("a pass that grants access to the arcade." + "\n");
         }
 
         if(hasRedOrb == true && secondWord == "red orb")
         {
-            System.out.println("a red orb that's warm to the touch.");
+            System.out.println("a red orb that's warm to the touch." + "\n");
         }
 
         if(hasYellowKey == true && secondWord == "yellow key")
         {
-            System.out.println("a small yellow key that turns on the roller coaster.");
+            System.out.println("a small yellow key that turns on the roller coaster." + "\n");
         }
 
         if(hasLiftKey == true && secondWord == "lift key")
         {
-            System.out.println("a small key that activates the chair lift.");
+            System.out.println("a small key that activates the chair lift." + "\n");
         }
 
         if(hasSilverOrb == true && secondWord == "silver orb")
         {
-            System.out.println("a silver orb that sparkles and shines.");
+            System.out.println("a silver orb that sparkles and shines." + "\n");
         }
 
         if(hasBook == true && secondWord == "book")
         {
             System.out.println("a book titled:" +
-                               "''" + "Life In a Haunted House" + "''");
+                               "''" + "Life In a Haunted House" + "''" + "\n");
         }
 
         if(hasHouseKey == true && secondWord == "house key")
         {
             System.out.println("a small house key with an" + "\n" +
                                "''" + "H" + "''" + "\n" +
-                               "on it.");
+                               "on it." + "\n");
         }
 
         if(hasSkullKey == true && secondWord == "skull key")
         {
-            System.out.println("a key with a skull on it.");
+            System.out.println("a key with a skull on it." + "\n");
         }
 
         if(hasBlackOrb == true && secondWord == "black orb")
         {
-            System.out.println("a black orb filled with murky darkness.");
+            System.out.println("a black orb filled with murky darkness." + "\n");
         }         
     }     
     
@@ -650,7 +593,7 @@ public class Game
             System.out.println("You dive into the deep end of the wave pool." + "\n" +
                                "You see some sort of card resting on the bottom." + "\n" +
                                "You pick it up and see that it's a pass for the Lazy River." + "\n" +
-                               "You then resurface and leave the water.");
+                               "You then resurface and leave the water." + "\n");
             hasBluePass = true;
             inWater = false;
         }
@@ -658,13 +601,8 @@ public class Game
         if(inWater == true && hasBluePass == true)
         {
             System.out.println("You dive into the deep end of the wave pool." + "\n" +
-                               "You get bored and resurface and leave the water.");
+                               "You get bored and resurface and leave the water." + "\n");
             inWater = false;
-        }
-        
-        if(currentRoom != wavePool)
-        {
-            System.out.println("You can't dive here.");
         }
     }     
     
@@ -677,13 +615,13 @@ public class Game
         {
             System.out.println("You eat the salad." + "\n" +
                                "Without any dressing on it, it is completely dry" + "\n" +
-                               "and way to crunchy for your taste.");
+                               "and way to crunchy for your taste." + "\n");
             hasSalad = false;
         }
         
         if(hasSalad == false)
         {
-            System.out.println("You don't have anything to eat.");
+            System.out.println("You don't have anything to eat." + "\n");
         }
     }      
     
@@ -695,7 +633,7 @@ public class Game
         if(currentRoom == wavePool && wearingBathingSuit == true)
         {
             System.out.println("Even though the water looks sketchy, you jump into the pool." + "\n" +
-                               "The water looks pretty deep... you could probably dive to the bottom.");
+                               "The water looks pretty deep... you could probably dive to the bottom." + "\n");
             inWater = true;
         }
       
@@ -703,7 +641,7 @@ public class Game
         {
             System.out.println("There's a sign:" + "\n" +
                                "''" + "PATRONS MUST WEAR APPROPRIATE CLOTHING" + "''" + "\n" +
-                               "It looks like you can't enter unless you're wearing a bathing suit.");
+                               "It looks like you can't enter unless you're wearing a bathing suit." + "\n");
         }
     }     
     
@@ -717,13 +655,13 @@ public class Game
             System.out.println("You enter the house and hear and eerie voice say:" + "\n" +
                                "''" + "Library...." + "''" + "\n" +
                                "You then make your way to the library and find a bookshelf" + "\n" +
-                               "with a book missing.");
+                               "with a book missing." + "\n");
             inLibrary = true;
         }
         
         if(currentRoom == hauntedHouse && hasHouseKey == false)
         {
-            System.out.println("The door is locked...you need a house key");
+            System.out.println("The door is locked...you need a house key." + "\n");
         }
     }         
 
@@ -735,7 +673,7 @@ public class Game
         if(currentRoom == houseOfMirrors && mirrorSmashed == false)
         {
             System.out.println("You enter the house of mirrors and notice arrows on the ground." + "\n" +
-                               "You follow the arrows and end up in a room with a giant mirror in it.");
+                               "You follow the arrows and end up in a room with a giant mirror in it." + "\n");
             inMirrors = true;
         }
         
@@ -743,7 +681,7 @@ public class Game
         {
             System.out.println("You enter the house of mirrors and notice arrows on the ground." + "\n" +
                                "You follow the arrows and end up in the room with the broken mirror in it." + "\n" +
-                               "Since the mirror is smashed, you turn around and leave.");
+                               "Since the mirror is smashed, you turn around and leave." + "\n");
             inMirrors = false;
         }
     }     
@@ -756,7 +694,7 @@ public class Game
         if(currentRoom == graveyard && hasSkullKey == true)
         {
             System.out.println("You open the door to the mausoleum and dust pours out of the entrance." + "\n" +
-                               "You walk to the back wall, and see a black orb.");
+                               "You walk to the back wall, and see a black orb." + "\n");
             mausoleumLocked = false;
             inMausoleum = true;
         }
@@ -764,7 +702,7 @@ public class Game
         if(currentRoom == graveyard && hasSkullKey == false)
         {
             System.out.println("You try to open the door but it won't budge." + "\n" +
-                               "You need the skull key.");
+                               "You need the skull key." + "\n");
         }
     }     
     
@@ -780,7 +718,7 @@ public class Game
                                "you reach the end and arrive at a gate...suddenly, a small" + "\n" +
                                "blue orb materializes in front of you. You take the orb and pass" + "\n" +
                                "through the gate, which quickly closes and locks behind you." + "\n" +
-                               "You take a look around and realize you are in the park plaza.");
+                               "You take a look around and realize you are in the park plaza." + "\n");
             riverLocked = false;
             inRiver = true;
             hasBlueOrb = true;
@@ -792,7 +730,7 @@ public class Game
         {
             System.out.println("There's a sign:" + "\n" +
                                "''" + "PRESENT PASS TO ENTER" + "''." + "\n" +
-                               "It looks like you can't proceed.");
+                               "It looks like you can't proceed." + "\n");
         }
         
         if(currentRoom == lazyRiver && hasBlueOrb == true)
@@ -800,7 +738,7 @@ public class Game
             System.out.println("You pick up a tube and walk to the river's entrance and jump in" + "\n" +
                                "After floating for what seems like forever," + "\n" +
                                "you reach the end and arrive at a gate..." + "\n" +
-                               "You pass through the gate, which quickly closes and locks behind you.");
+                               "You pass through the gate, which quickly closes and locks behind you." + "\n");
             inRiver = true;
             hasBlueOrb = true;
             currentRoom = parkPlaza;
@@ -820,9 +758,10 @@ public class Game
                                "You keep looking around and find a game that still works." + "\n" +
                                "It looks like an old school platformer and you decide to play for awhile." + "\n" +
                                "Pretty soon you're facing the final boss and after you beat him, the game shuts off." + "\n" +
-                               " A small red orb then materializes in front of you.");
+                               "A small red orb then materializes in front of you." + "\n");
             arcadeLocked = false;
             inArcade = true;
+            gameBeaten = true;
         }
         
         if(currentRoom == arcade && hasArcadePass == true && hasRedOrb == true)
@@ -830,16 +769,17 @@ public class Game
             System.out.println("You enter the arcade." + "\n" +
                                "You make your way to the back where the only working game is." + "\n" +
                                "You play a few rounds and get bored." + "\n" +
-                               "You then step out of the arcade.");
+                               "You then step out of the arcade." + "\n");
             arcadeLocked = false;
             inArcade = false;
-        }    
+        } 
         
-        if(currentRoom == arcade && hasRedPass == false)
+        if(currentRoom == arcade && hasArcadePass == false)
         {
-            System.out.println("There's a sign on the door that says:" + "\n" +
-                               "''" + "NO NOOBS ALLOWED" + "''!");
-        }
+            System.out.println("There's a sign:" + "\n" +
+                               "''" + "NO NOOBS ALLOWED" + "''." + "\n" +
+                               "It looks like you can't proceed." + "\n");
+        }        
     }    
     
     /** 
@@ -851,12 +791,12 @@ public class Game
         {
             System.out.println("You enter the hedge maze and wander around." + "\n" +
                                "You eventually reach the end where you see" + "\n" +
-                               "an orb on a pedestal.");
+                               "an orb on a pedestal." + "\n");
             endMaze = true;
         }
         if(currentRoom == hedgeMaze && mazeBlocked == true)
         {
-            System.out.println("You can't go any farther because of the vines.");
+            System.out.println("You can't go any farther because of the vines." + "\n");
         }
     }     
     
@@ -867,12 +807,12 @@ public class Game
     {
         if(inWater == true && hasWateringCan == true)
         {
-            System.out.println("You dip the watering can into the pool and fill it up.");
+            System.out.println("You dip the watering can into the pool and fill it up." + "\n");
             fullCan = true;
         }
         if(inWater == false)
         {
-            System.out.println("Cant't do that here.");
+            System.out.println("Cant't do that here." + "\n");
         }
     }    
     
@@ -885,7 +825,7 @@ public class Game
         if(!command.hasSecondWord()) 
         {
             // if there is no second word, we don't know where to go...
-            System.out.println("Go where?");
+            System.out.println("Go where?" + "\n");
             return;
         }
 
@@ -896,110 +836,43 @@ public class Game
 
         if(nextRoom == null) 
         {
-            System.out.println("Can't go that way!!");
+            System.out.println("Can't go that way!!" + "\n");
         }
         else 
         {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
-        
-        //Make the train travel in two different directions
-        if(currentRoom == train && nextRoom == hedgeMaze)
-        {
-            System.out.println("You board the train and head south towards the hedge maze.");
-        }
-                if(currentRoom == train && nextRoom == graveyard && hasHammer == false)
-        {
-            System.out.println("You board the train and head north towards the graveyard." + "\n" +
-                               "There's nothing but peace and quiet until a hammer comes crashing through" + "\n" +
-                               "the window and almost hits your head." + "\n" +
-                               "You walk over to the hammer and after picking it up, you return to to your seat.");
-            hasHammer = true;
-        }
-               if(currentRoom == train && nextRoom == graveyard && hasHammer == true)
-        {
-            System.out.println("You board the train and head north towards the graveyard.");
-        }
-        
+               
         //create the glowing in the bumper car
         if(nextRoom == bumperCars && hasArcadePass == false)
         {
             System.out.println("You see a faint red glow coming from one of the cars." + "\n" +
-                               "You walk over to the car and see an arcade pass on the seat.");
+                               "You walk over to the car and see an arcade pass on the seat." + "\n");
         }
         if(nextRoom == bumperCars && hasArcadePass == true)
         {
-            System.out.println("You walk into the middle of the arena...then step out of it.");
+            System.out.println("You walk into the middle of the arena...then step out of it." + "\n");
+        }
+              
+        if(nextRoom == gardenGates && gateLocked == true && hasWateringCan == false)
+        {
+            System.out.println("A watering can lies on the ground." + "\n"); 
+        }                      
+        
+        if(nextRoom == train && hasHammer == false)
+        {
+            System.out.println("There's a small hammer lying on the ground." + "\n");
         }
         
-        //Make the chair lift travel in two different directions
-        if(currentRoom == controlCenter && nextRoom == chairLift)
+        if(nextRoom == deathsDoor &&  hasHouseKey == false)
         {
-            System.out.println("You sit down on one of the chairs and it slowly starts to move." + "\n" +
-                               "You avoid looking down so you don't notice how high you really are." + "\n" +
-                               "After a few minutes, you're back in the main chair lift area.");
-        }
-        if(currentRoom == chairLift && nextRoom == controlCenter && hasHouseKey == false)
-        {
-            System.out.println("You hesitantly sit in one of the chairs and it suddenly starts to move." + "\n" +
-                               "You try to avoid looking down to see how high up you are." + "\n" +
-                               "You then notice that you're moving towards the far end of the park." + "\n" +
-                               "As you wonder where the ride is taking you, a baloon floats by." + "\n" +
-                               "You grab it and attached to it is a small house key." + "\n" +
-                               "Soon after, you arrive at a mysterious building.");
-            hasHouseKey = true;
-        }
-        if(currentRoom == chairLift && nextRoom == controlCenter && hasHouseKey == true)
-        {
-            System.out.println("You hesitantly sit in one of the chairs and it suddenly starts to move." + "\n" +
-                               "You try to avoid looking down to see how high up you are." + "\n" +
-                               "You then notice that you're moving towards the far end of the park." + "\n" +
-                               "Soon after, you arrive at a mysterious building.");
+            System.out.println("There's a small key on the ground." + "\n"); 
         }
         
-        //Create a locked door st the garden gates    
-        if(gateLocked == true && nextRoom == deathsDoor)
+        if(nextRoom == playground && hasYellowKey == false)
         {
-            System.out.println("The gate appears to be locked. You can't go any further...");
-        }
-        if(gateLocked == true && nextRoom == pettingZoo)
-        {
-            System.out.println("The gate appears to be locked. You can't go any further...");
-        }
-        if(gateLocked == true && nextRoom == train)
-        {
-            System.out.println("The gate appears to be locked. You can't go any further...");
-        }   
-        if(gateLocked == false)
-        {
-            gardenGates.setExit("north", deathsDoor);
-            gardenGates.setExit("south", pettingZoo);
-            gardenGates.setExit("west", train);
-            gateLocked = false;
-        }          
-        
-        //Create a locked door at the big bang bridge.
-        if(bridgeLocked == true && nextRoom == bigBangBridge)
-        {
-            System.out.println("There's a sign on the bridge:" + "\n" +
-                               "''" + "RESTRICTED ACCESS" + "''.");
-        }
-        if(bridgeLocked == false)
-        {
-            houseOfMirrors.setExit("east", bigBangBridge);
-            bridgeLocked = false;
-         }     
-    
-        //Create a locked door for the chair lift.
-        if(liftOff == true && nextRoom == controlCenter)
-        {
-            System.out.println("You can't use the chair lift right now.");
-        }
-        if(liftOff == false)
-        {
-            chairLift.setExit("south", controlCenter);
-            liftOff =  false;
+            System.out.println("It looks like someone dropped a yellow key on the ground." + "\n");
         }
     }    
     
@@ -1044,7 +917,7 @@ public class Game
         if(currentRoom == parkTower && orbCount < 5) 
         {
             System.out.println("You hear a voice:" +
-                               "''" + "Only those with all five treasures may proceed." + "''");
+                               "''" + "Only those with all five treasures may proceed." + "''" + "\n");
         }
     }  
     
@@ -1057,36 +930,19 @@ public class Game
         {
             System.out.println("You place the book in the empty spot." + "\n" +
                                "Suddenly, a small skull key pops out of the book's spine" + "\n" +
-                               "and falls onto the ground.");
+                               "and falls onto the ground." + "\n");
             return bookPlaced = true;
         }
         
         if(inLibrary == true && hasSkullKey == true)
         {
             System.out.println("...there's nothing to do here." + "\n" +
-                               "You leave the haunted house.");
+                               "You leave the haunted house." + "\n");
             hasSkullKey = true;
             return inLibrary = false;
         }
         return bookPlaced = true;
-    }       
-    
-    /** 
-     * Read the not that you found on the ground.
-     */
-    private void readNote() 
-    {
-        if(hasNote == true)
-        {
-            System.out.println("You take out the note an read it." + "\n" +
-                               "Scribbled on the piece of paper is:" + "\n" +
-                               "''" + "Th_ p_rt_l _s _n th_ P_rk T_w_r..." + "''");
-        }
-        else
-        {
-            System.out.println("You don't have anything to read.");
-        }
-    }          
+    }            
     
     /** 
      * Change out of the bathing suit.
@@ -1095,11 +951,11 @@ public class Game
     {
         if(wearingBathingSuit == true)
         {
-            System.out.println("You change out of the bathing suit suit and put on your regular clothes.");
+            System.out.println("You change out of the bathing suit suit and put on your regular clothes." + "\n");
         }
         if(wearingBathingSuit == false)
         {
-            System.out.println("You're not wearing the bathing suit.");
+            System.out.println("You're not wearing the bathing suit." + "\n");
         }
     }     
     
@@ -1113,7 +969,7 @@ public class Game
         {
             System.out.println("You rode the carousel." + "\n" +
                                "As soon as you get off, a coin materializes in front of you." + "\n" +
-                               "You take the coin and put it in your pocket.");
+                               "You take the coin and put it in your pocket." + "\n");
             coinCount++;
         }
     }     
@@ -1129,7 +985,7 @@ public class Game
                                "The car you're in slowly moves up towards the top and then stops." + "\n" +
                                "For awhile you get a nice view of the park. After a few minutes, you start miving again." + "\n" +
                                "Soon, you're on the ground and you step out of the car." + "\n" +
-                               "A small silver orb then materializes in front of you.");
+                               "A small silver orb then materializes in front of you." + "\n");
         }
         
         if(currentRoom == ferrisWheel && hasSilverOrb == true)
@@ -1137,68 +993,95 @@ public class Game
             System.out.println("You step into the car and it starts moving as soon as you sit down." + "\n" +
                                "The car you're in slowly moves up towards the top and then stops." + "\n" +
                                "For awhile you get a nice view of the park. After a few minutes, you start miving again." + "\n" +
-                               "Soon, you're on the ground and you step out of the car.");
+                               "Soon, you're on the ground and you step out of the car." + "\n");
         }        
-    }         
+    }    
+    
+    /** 
+     *  Show the goat the salad.
+     */
+    private void showSalad() 
+    {
+        if(currentRoom == pettingZoo && hasSalad == true && goatMoved == false)
+        {
+            System.out.println("The goat starts sniffing around and turns to you." + "\n" +
+                               "The goat smells the salad and charges at you." + "\n" +
+                               "You drop the salad and the goat starts eating it." + "\n" +
+                               "You walk over to where the goat was sitting and find a giant pair of scissors." + "\n");
+            goatMoved =  true;
+        }
+        if(currentRoom == pettingZoo && goatMoved == true)
+        {
+            System.out.println("The goat turns to you and simply stares." + "\n");
+            goatMoved = true;
+        }
+    }    
     
     /**
      * Pick up an item.
      */
     private void takeItem()
     {       
-        if(currentRoom == parkPlaza && hasNote == false)
-        {
-            System.out.println("You picked up the note.");
-            hasNote = true;
-        }
-        
         if(currentRoom == gardenGates && hasWateringCan == false)
         {
-            System.out.println("You picked up the watering can.");
+            System.out.println("You picked up the watering can." + "\n");
             hasWateringCan = true;
         }            
        
         if(currentRoom == pettingZoo && goatMoved == true && hasScissors == false)
         {
-            System.out.println("You picked up the giant scissors.");
+            System.out.println("You picked up the giant scissors." + "\n");
             hasScissors = true;
         }       
              
         if(currentRoom == hedgeMaze && endMaze == true && hasGreenOrb == false)
         {
             System.out.println("You picked up the green orb." + "\n" +
-                               "and go back to the maze's entrance.");
+                               "and go back to the maze's entrance." + "\n");
             hasGreenOrb = true;
             endMaze = false;
             orbCount = orbCount++;
         }          
         
+        if(currentRoom == train && hasHammer == false)
+        {
+            System.out.println("You picked up the hammer." + "\n");
+            hasHammer = true;
+        }
+        
+        if(currentRoom == deathsDoor && hasHouseKey == false)
+        {
+            System.out.println("You picked up the house key." + "\n");
+            hasHouseKey = true;
+        }
+        
         if(currentRoom == graveyard && mausoleumLocked == false && hasBlackOrb == false)
         {
-            System.out.println("You picked up the black orb.");
+            System.out.println("You picked up the black orb." + "\n");
             hasBlackOrb = true;
             orbCount = orbCount++;
         }             
         
         if(currentRoom == hauntedHouse && bookPlaced == true && hasSkullKey == false)
         {
-            System.out.println("You picked up the skull key");
+            System.out.println("You picked up the skull key." + "\n");
             hasSkullKey = true;
         }                  
         
         if(currentRoom == houseOfMirrors && mirrorSmashed == true && hasRedPass == false)
         {
             System.out.println("You picked up the red pass." + "\n" +
-                               "You then leave the house of mirrors.");
+                               "You then leave the house of mirrors." + "\n");
             hasRedPass = true;
             inMirrors = false;
             bridgeLocked = false;
+            houseOfMirrors.setExit("east", bigBangBridge);
         }                 
         
         if(inArcade == true && gameBeaten == true && hasRedOrb == false)
         {
             System.out.println("You picked up the red orb." + "\n" +
-                               "With nothing left to do, you step outside of the arcade.");
+                               "With nothing left to do, you step outside of the arcade." + "\n");
             hasRedOrb = true;
             orbCount = orbCount++;
             inArcade = false;
@@ -1206,32 +1089,32 @@ public class Game
         
         if(currentRoom == bumperCars && hasArcadePass == false)
         {
-            System.out.println("You picked up the arcade pass.");
+            System.out.println("You picked up the arcade pass." + "\n");
             hasArcadePass = true;
             arcadeLocked = false;
         }               
         
         if(currentRoom == playground && hasYellowKey == false)
         {
-            System.out.println("You picked up the yellow key.");
+            System.out.println("You picked up the yellow key." + "\n");
             hasYellowKey = true;
         }                 
         
         if(currentRoom == rollerCoaster && coasterOff == false && hasLiftKey == false)
         {
-            System.out.println("You picked up the lift key.");
+            System.out.println("You picked up the lift key." + "\n");
             hasLiftKey = true;
         }                     
         
         if(currentRoom == controlCenter && hasBook == false)
         {
-            System.out.println("You picked up the book.");
+            System.out.println("You picked up the book." + "\n");
             hasBook = true;
         }                         
         
         if(currentRoom == ferrisWheel && hasSilverOrb == false)
         {
-            System.out.println("You picked up the silver orb.");
+            System.out.println("You picked up the silver orb." + "\n");
             hasSilverOrb = true;
             orbCount = orbCount++;
         }                      
@@ -1245,12 +1128,12 @@ public class Game
         if(currentRoom == gardenGates && fullCan == true)
         {
             System.out.println("You water the mysterious seed and it grows into a beautiful flower!" + "\n" +
-                               "the gate then creaks open.");
+                               "the gate then creaks open." + "\n" +
+                               "There are exits in all directions." + "\n");
             gateLocked = false;
-        }
-        if(currentRoom != gardenGates && fullCan == true)
-        {
-            System.out.println("You probably shouldn't do that here.");
+            gardenGates.setExit("north", deathsDoor);
+            gardenGates.setExit("south", pettingZoo);
+            gardenGates.setExit("west", train);            
         }
     }    
    
@@ -1262,13 +1145,9 @@ public class Game
         if(inMirrors == true && hasHammer == true)
         {
             System.out.println("You take the hammer and smash the giant mirror and shards of glass fly everywhere." + "\n" +
-                               "You look down and see a red pass on the ground.");
+                               "You look down and see a red pass on the ground." + "\n");
             mirrorSmashed = true;
             inMirrors = false;
-        }
-        if(inMirrors == false && hasHammer == true)
-        {
-            System.out.println("You probably shouldn't use that here.");
         }
     }      
     
@@ -1277,16 +1156,12 @@ public class Game
      */
     private void useScissors() 
     {
-        if(currentRoom == gardenGates && hasScissors == true)
+        if(currentRoom.equals(hedgeMaze) && hasScissors == true)
         {
             System.out.println("You start cutting the vines and after a few minutes they're all gone." + "\n" +
-                               "You are now able to enter the hedge maze.");
+                               "You are now able to enter the hedge maze." + "\n");
             mazeBlocked = false;
-        }
-        if(currentRoom != gardenGates && hasScissors == true)
-        {
-            System.out.println("You probably shouldn't use that here.");
-        }    
+        } 
     }    
     
     /** 
@@ -1296,18 +1171,18 @@ public class Game
     {
         if(hasBathingSuit == true)
         {
-            System.out.println("You change out of your regular clothes and put on the bathing suit."); 
+            System.out.println("You change out of your regular clothes and put on the bathing suit." + "\n"); 
             wearingBathingSuit = true;
         }
         
         if(hasBathingSuit == false)
         {
-            System.out.println("You don't have a bathing suit.");
+            System.out.println("You don't have a bathing suit." + "\n");
         }
         
         if(wearingBathingSuit == true)
         {
-            System.out.println("You're wearing the bathing suit.");
+            System.out.println("You're wearing the bathing suit." + "\n");
         }
     }       
     
@@ -1320,7 +1195,7 @@ public class Game
     {
         if(command.hasSecondWord()) 
         {
-            System.out.println("Quit what?");
+            System.out.println("Quit what?" + "\n");
             return false;
         }
         else 

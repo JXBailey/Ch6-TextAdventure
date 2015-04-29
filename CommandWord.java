@@ -11,8 +11,8 @@ public enum CommandWord
     // corresponding user interface string.
     ACTIVATE("activate"), BUY("buy"), CHECK("check"), DIVE("dive"), 
     EAT("eat"), ENTER("enter"), FILL("fill"), GO("go"), HELP("help"), 
-    OPEN("open"), PLACE("place"), READ("read"), REMOVE("remove"), 
-    RIDE("ride"), TAKE("take"), UNKNOWN("?"), USE("use"), WEAR("wear"), 
+    OPEN("open"), PLACE("place"),  REMOVE("remove"), RIDE("ride"), 
+    TAKE("take"), SHOW("show"), UNKNOWN("?"), USE("use"),WEAR("wear"), 
     QUIT("quit");
       
     // The command string.
